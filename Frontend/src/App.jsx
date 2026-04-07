@@ -725,15 +725,29 @@ function NbaPage({ onBack }) {
     return `${year}-${month}-${day}`;
   }
 
-  function changeDate(offsetDays) {
-    const baseDate = gamesPayload.date ? new Date(gamesPayload.date) : new Date();
-    baseDate.setDate(baseDate.getDate() + offsetDays);
-    socket.emit("set_games_date", formatDate(baseDate));
-  }
+function changeDate(offsetDays) {
+  const baseDate = gamesPayload.date
+    ? new Date(`${gamesPayload.date}T12:00:00`)
+    : new Date(`${getUSEasternDateString()}T12:00:00`);
 
-  function jumpToToday() {
-    socket.emit("set_games_date", formatDate(new Date()));
-  }
+  baseDate.setDate(baseDate.getDate() + offsetDays);
+  socket.emit("set_games_date", formatDate(baseDate));
+}
+
+function getUSEasternDateString() {
+  const formatter = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+
+  return formatter.format(new Date());
+}
+
+function jumpToToday() {
+  socket.emit("set_games_date", getUSEasternDateString());
+}
 
   const game = playbackPayload.rebuiltGame;
 

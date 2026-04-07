@@ -55,7 +55,16 @@ const api = axios.create({
   timeout: 15000,
 });
 
-let currentDate = new Date().toISOString().slice(0, 10);
+function getUSEasternDateString() {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
+}
+
+let currentDate = getUSEasternDateString();
 let selectedGameId = null;
 
 let lastGamesListJson = "";
@@ -133,7 +142,11 @@ async function fetchGames(dateStr) {
   });
 
   const games = response.data?.data || [];
-
+games.sort((a, b) => {
+  const aTime = new Date(a.date).getTime();
+  const bTime = new Date(b.date).getTime();
+  return aTime - bTime;
+});
   return games.map((game) => ({
     id: game.id,
     date: game.date,
