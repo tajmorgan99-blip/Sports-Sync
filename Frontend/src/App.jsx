@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
-
+import { teamColors } from "./teamcolors.js";
 const socket = io(import.meta.env.VITE_API_URL, {
   transports: ["websocket", "polling"]
 });
@@ -843,22 +843,93 @@ function jumpToToday() {
             alignItems: "start",
           }}
         >
-          <div
-            style={{
-              ...styles.sectionCard,
-              padding: 16,
-              position: isMobile ? "static" : "sticky",
-              top: 20,
-            }}
-          >
-            <h2 style={{ marginTop: 0, marginBottom: 14 }}>Games</h2>
+   <div
+  style={{
+    ...styles.sectionCard,
+    padding: isMobile ? 12 : 18,
+    position: isMobile ? "static" : "sticky",
+    top: 20,
+    background: "white",
+    borderRadius: 18,
+    border: "1px solid #E2E8F0",
+    boxShadow: "0 6px 18px rgba(0,0,0,0.04)",
+  }}
+>
+<h2 style={{ marginTop: 0, marginBottom: 14, fontWeight: 700 }}>Games</h2>
 
-            {gamesPayload.games.length === 0 ? (
-              <div>No games found for this date.</div>
-            ) : (
-              gamesPayload.games.map((g) => {
-                const selected = g.id === gamesPayload.selectedGameId;
-                const revealed = isFinalGameRevealed(g.id);
+{gamesPayload.games.length === 0 ? (
+  <div>No games found for this date.</div>
+) : (
+  gamesPayload.games.map((g) => {
+    const selected = g.id === gamesPayload.selectedGameId;
+    const revealed = isFinalGameRevealed(g.id);
+
+    const homeColor = teamColors[g.homeTeam.shortName] || "#CBD5E1";
+    const awayColor = teamColors[g.awayTeam.shortName] || "#CBD5E1";
+
+    return (
+      <div
+        key={g.id}
+        onClick={() => selectGame(g.id)}
+        style={{
+          background: selected ? "#F1F5F9" : "white",
+          borderRadius: 16,
+          padding: 16,
+          marginBottom: 12,
+          border: selected ? "2px solid #22C55E" : "1px solid #E2E8F0",
+          boxShadow: "0 4px 14px rgba(0,0,0,0.04)",
+          cursor: "pointer",
+          transition: "all 0.15s ease",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <div>
+            <div
+              style={{
+                color: awayColor,
+                fontWeight: 700,
+                fontSize: 15,
+              }}
+            >
+              {g.awayTeam.shortName}
+            </div>
+
+            <div
+              style={{
+                color: homeColor,
+                fontWeight: 700,
+                fontSize: 15,
+              }}
+            >
+              {g.homeTeam.shortName}
+            </div>
+          </div>
+
+          <div style={{ textAlign: "right" }}>
+            <div>{revealed ? g.awayTeam.score : "-"}</div>
+            <div>{revealed ? g.homeTeam.score : "-"}</div>
+          </div>
+        </div>
+
+        <div
+          style={{
+            marginTop: 8,
+            fontSize: 12,
+            color: "#64748B",
+          }}
+        >
+          {g.statusText}
+        </div>
+      </div>
+    );
+  })
+)}
 
                 return (
                   <div
@@ -920,8 +991,7 @@ function jumpToToday() {
                     </button>
                   </div>
                 );
-              })
-            )}
+          
           </div>
 
           <div style={{ minWidth: 0 }}>
@@ -1004,16 +1074,18 @@ function jumpToToday() {
                 >
                   <div style={styles.label}>Live Replay</div>
 
-                  <div
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: isMobile ? "1fr" : "1fr auto 1fr",
-                      alignItems: "center",
-                      gap: 16,
-                      marginTop: 10,
-                      textAlign: isMobile ? "center" : "initial",
-                    }}
-                  >
+                 <div
+  style={{
+    display: "grid",
+    gridTemplateColumns: isMobile ? "1fr" : "300px 1fr",
+    gap: 20,
+    background: "#F8FAFC",
+    minHeight: "100vh",
+    padding: isMobile ? 12 : 20,
+    alignItems: "start",
+  }}
+>
+                  
                     <div style={{ textAlign: isMobile ? "center" : "right" }}>
                       <div
                         style={{
