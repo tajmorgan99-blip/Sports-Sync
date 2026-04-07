@@ -8,7 +8,14 @@ const http = require("http");
 const { Server } = require("socket.io");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://stat-sync.com",
+    "https://www.stat-sync.com"
+  ],
+  credentials: true
+}));
 
 const server = http.createServer(app);
 
@@ -17,13 +24,16 @@ const EXTRA_ORIGINS = (process.env.EXTRA_FRONTEND_ORIGINS || "")
   .split(",")
   .map((s) => s.trim())
   .filter(Boolean);
-
-const allowedOrigins = ["http://localhost:5173", FRONTEND_ORIGIN, ...EXTRA_ORIGINS];
-
 const io = new Server(server, {
   cors: {
-    origin: allowedOrigins,
-  },
+    origin: [
+      "http://localhost:5173",
+      "https://stat-sync.com",
+      "https://www.stat-sync.com"
+    ],
+    methods: ["GET", "POST"],
+    credentials: true
+  }
 });
 
 const API_KEY = process.env.BALLDONTLIE_API_KEY;
