@@ -1219,12 +1219,10 @@ function App() {
 
 export default App;
 const homeStyles = {
-  page: {
-    minHeight: "100vh",
-    background:
-      "radial-gradient(circle at top, #1e3a8a 0%, #0f172a 35%, #020617 100%)",
-    color: "white",
-    fontFamily: "Inter, Arial, sans-serif",
+ page: {
+  minHeight: "100vh",
+  background:
+    "linear-gradient(180deg, #0f172a 0%, #020617 100%)",
   },
 
   nav: {
@@ -1320,13 +1318,16 @@ const homeStyles = {
     marginBottom: 18,
   },
 
-  title: {
-    fontSize: "clamp(42px, 7vw, 72px)",
-    lineHeight: 0.96,
-    margin: 0,
-    fontWeight: 900,
-    letterSpacing: "-0.05em",
-  },
+title: {
+  fontSize: "clamp(42px, 7vw, 72px)",
+  lineHeight: 0.96,
+  margin: 0,
+  fontWeight: 900,
+  letterSpacing: "-0.05em",
+  background: "linear-gradient(90deg, white, #22C55E)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent"
+},
 
   subtitle: {
     marginTop: 18,
