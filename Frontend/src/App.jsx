@@ -337,7 +337,6 @@ function HomePage({ onChooseSport }) {
     <div style={homeStyles.page}>
       <div style={homeStyles.nav}>
         <div style={homeStyles.brandWrap}>
-          <img src="/logo.png" alt="Stat Sync" style={homeStyles.logo} />
           <div>
             <div style={homeStyles.brand}>Stat Sync</div>
             <div style={homeStyles.brandSub}>Watch Delayed. Stay In Sync.</div>
@@ -1250,10 +1249,11 @@ const homeStyles = {
   },
 
   brand: {
-    fontSize: 28,
-    fontWeight: 800,
-    letterSpacing: "-0.03em",
-  },
+  fontSize: "28px",
+  fontWeight: 700,
+  letterSpacing: "-0.02em",
+  color: "white"
+},
 
   brandSub: {
     fontSize: 13,
