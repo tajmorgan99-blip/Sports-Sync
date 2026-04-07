@@ -931,7 +931,6 @@ function jumpToToday() {
   })
 )}
 
-                return (
                   <div
                     key={g.id}
                     style={{
