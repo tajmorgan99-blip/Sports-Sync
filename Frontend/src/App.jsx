@@ -532,21 +532,33 @@ function NbaPage({ onBack }) {
   const [displayPeriod, setDisplayPeriod] = useState(1);
 
   useEffect(() => {
-    socket.on("games_list_update", (payload) => {
-      setGamesPayload(payload);
-    });
+  socket.on("connect", () => {
+    console.log("Socket connected:", socket.id);
+  });
 
-    socket.on("playback_update", (payload) => {
-      setPlaybackPayload(payload);
-    });
+  socket.on("connect_error", (err) => {
+    console.error("Socket connect_error:", err.message);
+  });
 
-    socket.emit("request_playback_state");
+  socket.on("games_list_update", (payload) => {
+    console.log("games_list_update received:", payload);
+    setGamesPayload(payload);
+  });
 
-    return () => {
-      socket.off("games_list_update");
-      socket.off("playback_update");
-    };
-  }, []);
+  socket.on("playback_update", (payload) => {
+    console.log("playback_update received:", payload);
+    setPlaybackPayload(payload);
+  });
+
+  socket.emit("request_playback_state");
+
+  return () => {
+    socket.off("connect");
+    socket.off("connect_error");
+    socket.off("games_list_update");
+    socket.off("playback_update");
+  };
+}, []);
 
   useEffect(() => {
     localStorage.setItem(
