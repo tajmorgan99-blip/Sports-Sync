@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-const socket = io(import.meta.env.VITE_API_URL);
+const socket = io(import.meta.env.VITE_API_URL, {
+  transports: ["websocket", "polling"]
+});
 const REVEAL_STORAGE_KEY = "revealedFinalGameIds";
 
 const theme = {
