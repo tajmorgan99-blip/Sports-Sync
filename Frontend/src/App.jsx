@@ -334,131 +334,175 @@ function TeamColumn({ teamName, players }) {
 
 function HomePage({ onChooseSport }) {
   return (
-    <div style={styles.page}>
-      <div
-        style={{
-          minHeight: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: 24,
-        }}
-      >
-        <div
-          style={{
-            ...styles.card,
-            width: 720,
-            padding: 36,
-            textAlign: "center",
-          }}
-        >
-          <div
-            style={{
-              display: "inline-block",
-              marginBottom: 14,
-              padding: "6px 10px",
-              borderRadius: 999,
-              backgroundColor: theme.primarySoft,
-              color: theme.primary,
-              fontWeight: 700,
-              fontSize: 12,
-              letterSpacing: "0.04em",
-              textTransform: "uppercase",
-            }}
-          >
-            Spoiler-safe sync replay
-          </div>
-
-          <h1 style={{ margin: 0, fontSize: 42, letterSpacing: "-0.03em" }}>
-            Sync Replay
-          </h1>
-
-          <p
-            style={{
-              color: theme.muted,
-              fontSize: 17,
-              lineHeight: 1.6,
-              margin: "14px auto 28px",
-              maxWidth: 560,
-            }}
-          >
-            Follow games without spoilers, sync your delayed stream, and watch the
-            score and box score build naturally.
-          </p>
-
-          <div
-            style={{
-              display: "flex",
-              gap: 16,
-              justifyContent: "center",
-              flexWrap: "wrap",
-            }}
-          >
-            <button
-              onClick={() => onChooseSport("nba")}
-              style={{
-                ...styles.primaryButton,
-                width: 190,
-                padding: "18px 20px",
-                fontSize: 18,
-                borderRadius: 16,
-              }}
-            >
-              NBA
-            </button>
-
-            <button
-              onClick={() => onChooseSport("mlb")}
-              style={{
-                ...styles.button,
-                width: 190,
-                padding: "18px 20px",
-                fontSize: 18,
-                borderRadius: 16,
-              }}
-            >
-              MLB
-              <div
-                style={{
-                  marginTop: 6,
-                  fontSize: 12,
-                  fontWeight: 700,
-                  color: theme.muted,
-                }}
-              >
-                Coming soon
-              </div>
-            </button>
-
-            <button
-              onClick={() => onChooseSport("nfl")}
-              style={{
-                ...styles.button,
-                width: 190,
-                padding: "18px 20px",
-                fontSize: 18,
-                borderRadius: 16,
-              }}
-            >
-              NFL
-              <div
-                style={{
-                  marginTop: 6,
-                  fontSize: 12,
-                  fontWeight: 700,
-                  color: theme.muted,
-                }}
-              >
-                Coming soon
-              </div>
-            </button>
+    <div style={homeStyles.page}>
+      <div style={homeStyles.nav}>
+        <div style={homeStyles.brandWrap}>
+          <img src="/logo.png" alt="Stat Sync" style={homeStyles.logo} />
+          <div>
+            <div style={homeStyles.brand}>Stat Sync</div>
+            <div style={homeStyles.brandSub}>Watch Delayed. Stay In Sync.</div>
           </div>
         </div>
+
+        <div style={homeStyles.navPills}>
+          <span style={homeStyles.navPillActive}>NBA Live</span>
+          <span style={homeStyles.navPill}>MLB Soon</span>
+          <span style={homeStyles.navPill}>NFL Soon</span>
+        </div>
       </div>
+
+      <section style={homeStyles.hero}>
+        <div style={homeStyles.heroLeft}>
+          <div style={homeStyles.badge}>Spoiler-safe sports sync</div>
+
+          <h1 style={homeStyles.title}>
+            Watch Delayed.
+            <br />
+            Stay In Sync.
+          </h1>
+
+          <p style={homeStyles.subtitle}>
+            Stat Sync lets you follow your game without spoilers. Watch your
+            delayed stream while the score, play-by-play, and box score build in
+            sync with what you are actually watching.
+          </p>
+
+          <div style={homeStyles.ctaRow}>
+            <button
+              onClick={() => onChooseSport("nba")}
+              style={homeStyles.primaryButton}
+            >
+              Start with NBA
+            </button>
+
+            <div style={homeStyles.inlineNote}>
+              NBA available now · MLB and NFL coming soon
+            </div>
+          </div>
+        </div>
+
+        <div style={homeStyles.heroRight}>
+          <div style={homeStyles.previewCard}>
+            <div style={homeStyles.previewHeader}>
+              <div style={homeStyles.previewHeaderLeft}>
+                <span style={homeStyles.previewDotGreen}></span>
+                <span style={homeStyles.previewLabel}>Live Replay Preview</span>
+              </div>
+              <span style={homeStyles.previewClock}>Q2 • 07:43</span>
+            </div>
+
+            <div style={homeStyles.scoreboard}>
+              <div style={homeStyles.teamBlock}>
+                <div style={homeStyles.teamLabel}>Away</div>
+                <div style={homeStyles.teamName}>Celtics</div>
+              </div>
+
+              <div style={homeStyles.scoreBlock}>
+                <div style={homeStyles.scoreText}>58 — 55</div>
+                <div style={homeStyles.scoreSub}>Building with your stream</div>
+              </div>
+
+              <div style={homeStyles.teamBlock}>
+                <div style={homeStyles.teamLabel}>Home</div>
+                <div style={homeStyles.teamName}>Raptors</div>
+              </div>
+            </div>
+
+            <div style={homeStyles.feedBox}>
+              <div style={homeStyles.feedRow}>
+                <span style={homeStyles.feedMeta}>Q2 07:43</span>
+                <span style={homeStyles.feedText}>
+                  Jaylen Brown makes 15-foot jumper
+                </span>
+                <span style={homeStyles.feedScore}>58-55</span>
+              </div>
+
+              <div style={homeStyles.feedRow}>
+                <span style={homeStyles.feedMeta}>Q2 08:01</span>
+                <span style={homeStyles.feedText}>
+                  Derrick White defensive rebound
+                </span>
+                <span style={homeStyles.feedScore}>56-55</span>
+              </div>
+
+              <div style={homeStyles.feedRow}>
+                <span style={homeStyles.feedMeta}>Q2 08:10</span>
+                <span style={homeStyles.feedText}>
+                  Scottie Barnes misses 3-point shot
+                </span>
+                <span style={homeStyles.feedScore}>56-55</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style={homeStyles.stepsSection}>
+        <div style={homeStyles.sectionEyebrow}>How it works</div>
+        <h2 style={homeStyles.sectionTitle}>Built for delayed viewing</h2>
+
+        <div style={homeStyles.stepsGrid}>
+          <div style={homeStyles.stepCard}>
+            <div style={homeStyles.stepNumber}>1</div>
+            <div style={homeStyles.stepTitle}>Pick a game</div>
+            <div style={homeStyles.stepText}>
+              Choose the matchup you want without revealing the final score.
+            </div>
+          </div>
+
+          <div style={homeStyles.stepCard}>
+            <div style={homeStyles.stepNumber}>2</div>
+            <div style={homeStyles.stepTitle}>Start your stream</div>
+            <div style={homeStyles.stepText}>
+              Begin your delayed broadcast whenever you’re ready.
+            </div>
+          </div>
+
+          <div style={homeStyles.stepCard}>
+            <div style={homeStyles.stepNumber}>3</div>
+            <div style={homeStyles.stepTitle}>Stay in sync</div>
+            <div style={homeStyles.stepText}>
+              Watch the score, game clock, and stats build naturally with your viewing.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style={homeStyles.sportsSection}>
+        <div style={homeStyles.sectionEyebrow}>Sports</div>
+        <h2 style={homeStyles.sectionTitle}>One platform, multiple leagues</h2>
+
+        <div style={homeStyles.sportCards}>
+          <button
+            onClick={() => onChooseSport("nba")}
+            style={homeStyles.sportCardActive}
+          >
+            <div style={homeStyles.sportName}>NBA</div>
+            <div style={homeStyles.sportStatusLive}>Available now</div>
+          </button>
+
+          <div style={homeStyles.sportCard}>
+            <div style={homeStyles.sportName}>MLB</div>
+            <div style={homeStyles.sportStatusSoon}>Coming soon</div>
+          </div>
+
+          <div style={homeStyles.sportCard}>
+            <div style={homeStyles.sportName}>NFL</div>
+            <div style={homeStyles.sportStatusSoon}>Coming soon</div>
+          </div>
+        </div>
+      </section>
+
+      <footer style={homeStyles.footer}>
+        <div style={homeStyles.footerBrand}>Stat Sync</div>
+        <div style={homeStyles.footerText}>
+          Watch Delayed. Stay In Sync.
+        </div>
+        <div style={homeStyles.footerText}>stat-sync.com</div>
+      </footer>
     </div>
   );
 }
-
 function MlbPlaceholder({ onBack }) {
   return (
     <div style={styles.page}>
@@ -1174,3 +1218,409 @@ function App() {
 }
 
 export default App;
+const homeStyles = {
+  page: {
+    minHeight: "100vh",
+    background:
+      "radial-gradient(circle at top, #1e3a8a 0%, #0f172a 35%, #020617 100%)",
+    color: "white",
+    fontFamily: "Inter, Arial, sans-serif",
+  },
+
+  nav: {
+    maxWidth: 1200,
+    margin: "0 auto",
+    padding: "24px 20px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: 16,
+    flexWrap: "wrap",
+  },
+
+  brandWrap: {
+    display: "flex",
+    alignItems: "center",
+    gap: 14,
+  },
+
+  logo: {
+    width: 48,
+    height: 48,
+    objectFit: "contain",
+    borderRadius: 12,
+  },
+
+  brand: {
+    fontSize: 28,
+    fontWeight: 800,
+    letterSpacing: "-0.03em",
+  },
+
+  brandSub: {
+    fontSize: 13,
+    color: "#94A3B8",
+    marginTop: 2,
+  },
+
+  navPills: {
+    display: "flex",
+    gap: 10,
+    flexWrap: "wrap",
+  },
+
+  navPill: {
+    padding: "8px 12px",
+    borderRadius: 999,
+    border: "1px solid rgba(255,255,255,0.12)",
+    backgroundColor: "rgba(255,255,255,0.04)",
+    color: "#CBD5E1",
+    fontSize: 13,
+    fontWeight: 700,
+  },
+
+  navPillActive: {
+    padding: "8px 12px",
+    borderRadius: 999,
+    border: "1px solid rgba(34,197,94,0.45)",
+    backgroundColor: "rgba(34,197,94,0.14)",
+    color: "#86EFAC",
+    fontSize: 13,
+    fontWeight: 700,
+  },
+
+  hero: {
+    maxWidth: 1200,
+    margin: "0 auto",
+    padding: "40px 20px 20px",
+    display: "grid",
+    gridTemplateColumns:
+  typeof window !== "undefined" && window.innerWidth < 900
+    ? "1fr"
+    : "1.1fr 0.9fr",
+    gap: 36,
+    alignItems: "center",
+  },
+
+  heroLeft: {
+    minWidth: 0,
+  },
+
+  badge: {
+    display: "inline-block",
+    padding: "8px 12px",
+    borderRadius: 999,
+    backgroundColor: "rgba(59,130,246,0.16)",
+    border: "1px solid rgba(59,130,246,0.35)",
+    color: "#BFDBFE",
+    fontSize: 12,
+    fontWeight: 700,
+    textTransform: "uppercase",
+    letterSpacing: "0.06em",
+    marginBottom: 18,
+  },
+
+  title: {
+    fontSize: "clamp(42px, 7vw, 72px)",
+    lineHeight: 0.96,
+    margin: 0,
+    fontWeight: 900,
+    letterSpacing: "-0.05em",
+  },
+
+  subtitle: {
+    marginTop: 18,
+    maxWidth: 620,
+    color: "#CBD5E1",
+    fontSize: 18,
+    lineHeight: 1.7,
+  },
+
+  ctaRow: {
+    marginTop: 28,
+    display: "flex",
+    alignItems: "center",
+    gap: 16,
+    flexWrap: "wrap",
+  },
+
+  primaryButton: {
+    background: "linear-gradient(135deg, #22C55E 0%, #16A34A 100%)",
+    color: "white",
+    border: "none",
+    borderRadius: 16,
+    padding: "16px 22px",
+    fontSize: 16,
+    fontWeight: 800,
+    cursor: "pointer",
+    boxShadow: "0 10px 24px rgba(34,197,94,0.28)",
+  },
+
+  inlineNote: {
+    color: "#94A3B8",
+    fontSize: 14,
+    fontWeight: 600,
+  },
+
+  heroRight: {
+    minWidth: 0,
+  },
+
+  previewCard: {
+    background: "rgba(15,23,42,0.72)",
+    border: "1px solid rgba(255,255,255,0.10)",
+    borderRadius: 24,
+    boxShadow: "0 20px 50px rgba(0,0,0,0.35)",
+    backdropFilter: "blur(10px)",
+    padding: 20,
+  },
+
+  previewHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: 12,
+    marginBottom: 18,
+    flexWrap: "wrap",
+  },
+
+  previewHeaderLeft: {
+    display: "flex",
+    alignItems: "center",
+    gap: 10,
+  },
+
+  previewDotGreen: {
+    width: 10,
+    height: 10,
+    borderRadius: "50%",
+    backgroundColor: "#22C55E",
+    boxShadow: "0 0 14px rgba(34,197,94,0.8)",
+  },
+
+  previewLabel: {
+    color: "#E2E8F0",
+    fontSize: 13,
+    fontWeight: 700,
+  },
+
+  previewClock: {
+    color: "#86EFAC",
+    fontWeight: 800,
+    fontSize: 14,
+  },
+
+  scoreboard: {
+    display: "grid",
+    gridTemplateColumns: "1fr auto 1fr",
+    gap: 16,
+    alignItems: "center",
+    padding: "18px 16px",
+    borderRadius: 18,
+    background: "linear-gradient(180deg, rgba(30,41,59,0.9), rgba(15,23,42,0.9))",
+    border: "1px solid rgba(255,255,255,0.08)",
+  },
+
+  teamBlock: {
+    textAlign: "center",
+  },
+
+  teamLabel: {
+    color: "#94A3B8",
+    fontSize: 12,
+    fontWeight: 700,
+    textTransform: "uppercase",
+    letterSpacing: "0.06em",
+  },
+
+  teamName: {
+    marginTop: 6,
+    fontSize: 20,
+    fontWeight: 800,
+  },
+
+  scoreBlock: {
+    textAlign: "center",
+  },
+
+  scoreText: {
+    fontSize: 34,
+    fontWeight: 900,
+    letterSpacing: "-0.04em",
+  },
+
+  scoreSub: {
+    marginTop: 6,
+    color: "#94A3B8",
+    fontSize: 13,
+    fontWeight: 600,
+  },
+
+  feedBox: {
+    marginTop: 18,
+    borderRadius: 18,
+    overflow: "hidden",
+    border: "1px solid rgba(255,255,255,0.08)",
+    backgroundColor: "rgba(255,255,255,0.04)",
+  },
+
+  feedRow: {
+    display: "grid",
+    gridTemplateColumns: "78px 1fr 70px",
+    gap: 12,
+    padding: "14px 16px",
+    borderBottom: "1px solid rgba(255,255,255,0.06)",
+    fontSize: 14,
+    alignItems: "start",
+  },
+
+  feedMeta: {
+    color: "#94A3B8",
+    fontWeight: 700,
+  },
+
+  feedText: {
+    color: "#F8FAFC",
+    lineHeight: 1.5,
+  },
+
+  feedScore: {
+    textAlign: "right",
+    color: "#E2E8F0",
+    fontWeight: 800,
+  },
+
+  stepsSection: {
+    maxWidth: 1200,
+    margin: "60px auto 0",
+    padding: "0 20px",
+  },
+
+  sportsSection: {
+    maxWidth: 1200,
+    margin: "60px auto 0",
+    padding: "0 20px 20px",
+  },
+
+  sectionEyebrow: {
+    color: "#86EFAC",
+    fontSize: 12,
+    fontWeight: 800,
+    textTransform: "uppercase",
+    letterSpacing: "0.08em",
+    marginBottom: 10,
+  },
+
+  sectionTitle: {
+    margin: 0,
+    fontSize: 32,
+    fontWeight: 800,
+    letterSpacing: "-0.03em",
+  },
+
+  stepsGrid: {
+    display: "grid",
+gridTemplateColumns:
+  typeof window !== "undefined" && window.innerWidth < 900
+    ? "1fr"
+    : "repeat(3, minmax(0, 1fr))",
+    gap: 18,
+    marginTop: 22,
+  },
+
+  stepCard: {
+    backgroundColor: "rgba(255,255,255,0.05)",
+    border: "1px solid rgba(255,255,255,0.08)",
+    borderRadius: 20,
+    padding: 22,
+  },
+
+  stepNumber: {
+    width: 34,
+    height: 34,
+    borderRadius: "50%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(34,197,94,0.14)",
+    color: "#86EFAC",
+    fontWeight: 900,
+    marginBottom: 14,
+  },
+
+  stepTitle: {
+    fontSize: 20,
+    fontWeight: 800,
+    marginBottom: 10,
+  },
+
+  stepText: {
+    color: "#CBD5E1",
+    lineHeight: 1.7,
+    fontSize: 15,
+  },
+
+  sportCards: {
+    display: "grid",
+  gridTemplateColumns:
+  typeof window !== "undefined" && window.innerWidth < 900
+    ? "1fr"
+    : "repeat(3, minmax(0, 1fr))",
+    gap: 18,
+    marginTop: 22,
+  },
+
+  sportCardActive: {
+    background: "linear-gradient(180deg, rgba(34,197,94,0.16), rgba(255,255,255,0.05))",
+    border: "1px solid rgba(34,197,94,0.35)",
+    borderRadius: 20,
+    padding: 24,
+    color: "white",
+    textAlign: "left",
+    cursor: "pointer",
+  },
+
+  sportCard: {
+    backgroundColor: "rgba(255,255,255,0.05)",
+    border: "1px solid rgba(255,255,255,0.08)",
+    borderRadius: 20,
+    padding: 24,
+  },
+
+  sportName: {
+    fontSize: 24,
+    fontWeight: 800,
+    marginBottom: 8,
+  },
+
+  sportStatusLive: {
+    color: "#86EFAC",
+    fontWeight: 700,
+    fontSize: 14,
+  },
+
+  sportStatusSoon: {
+    color: "#94A3B8",
+    fontWeight: 700,
+    fontSize: 14,
+  },
+
+  footer: {
+    maxWidth: 1200,
+    margin: "50px auto 0",
+    padding: "30px 20px 50px",
+    borderTop: "1px solid rgba(255,255,255,0.08)",
+  },
+
+  footerBrand: {
+    fontSize: 20,
+    fontWeight: 800,
+    marginBottom: 8,
+  },
+
+  footerText: {
+    color: "#94A3B8",
+    fontSize: 14,
+    marginBottom: 4,
+  },
+};
