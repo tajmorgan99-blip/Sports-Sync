@@ -16,7 +16,9 @@ app.use(cors({
   ],
   credentials: true
 }));
-
+app.get("/test", (req, res) => {
+  res.json({ working: true });
+});
 const server = http.createServer(app);
 
 const FRONTEND_ORIGIN = process.env.FRONTEND_ORIGIN || "http://localhost:5173";
