@@ -230,16 +230,18 @@ function TeamColumn({ teamName, players }) {
         boxShadow: theme.shadow,
       }}
     >
-      <div
-        style={{
-          backgroundColor: "#103b52",
-          color: "white",
-          padding: "10px 12px",
-          fontWeight: "bold",
-        }}
-      >
-        {teamName}
-      </div>
+  <div
+  style={{
+    backgroundColor: teamColors[teamName] || "#1E293B",
+    color: "white",
+    padding: "10px 12px",
+    fontWeight: "bold",
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+  }}
+>
+  {teamName}
+</div>
 
       <div style={{ overflowX: "auto" }}>
         <table
@@ -756,10 +758,10 @@ function jumpToToday() {
       <div style={styles.shell}>
         <div style={styles.topBar}>
           <div>
-            <h1 style={styles.heroTitle}>NBA Sync Replay</h1>
-            <p style={styles.heroSub}>
-              Spoiler-safe game tracking for delayed viewers
-            </p>
+          <h1 style={styles.heroTitle}>Stat Sync</h1>
+<p style={styles.heroSub}>
+  Watch Delayed. Stay In Sync.
+</p>
           </div>
 
           <button onClick={onBack} style={styles.button}>
@@ -1033,9 +1035,15 @@ function jumpToToday() {
                       >
                         Away
                       </div>
-                      <div style={{ fontSize: 24, fontWeight: 800 }}>
-                        {game.awayTeam.name}
-                      </div>
+                      <div
+  style={{
+    fontSize: 24,
+    fontWeight: 800,
+    color: teamColors[game.awayTeam.shortName] || "#111",
+  }}
+>
+  {game.awayTeam.name}
+</div>
                     </div>
 
                     <div style={{ textAlign: "center" }}>
@@ -1066,9 +1074,15 @@ function jumpToToday() {
                       >
                         Home
                       </div>
-                      <div style={{ fontSize: 24, fontWeight: 800 }}>
-                        {game.homeTeam.name}
-                      </div>
+                     <div
+  style={{
+    fontSize: 24,
+    fontWeight: 800,
+    color: teamColors[game.homeTeam.shortName] || "#111",
+  }}
+>
+  {game.homeTeam.name}
+</div>
                     </div>
                   </div>
                 </div>
