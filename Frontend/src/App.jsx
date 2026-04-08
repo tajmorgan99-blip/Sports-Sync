@@ -930,67 +930,6 @@ function jumpToToday() {
     );
   })
 )}
-
-                  <div
-                    key={g.id}
-                    style={{
-                      marginBottom: 12,
-                      padding: 14,
-                      borderRadius: 14,
-                      border: selected
-                        ? `2px solid ${theme.primary}`
-                        : `1px solid ${theme.border}`,
-                      backgroundColor: selected ? "#eff6ff" : "white",
-                      boxShadow: selected
-                        ? "0 6px 16px rgba(29, 78, 216, 0.12)"
-                        : "none",
-                    }}
-                  >
-                    <button
-                      onClick={() => selectGame(g.id)}
-                      style={{
-                        display: "block",
-                        width: "100%",
-                        textAlign: "left",
-                        marginBottom: 12,
-                        background: "transparent",
-                        border: "none",
-                        padding: 0,
-                        cursor: "pointer",
-                      }}
-                    >
-                      <div style={{ fontWeight: 800, lineHeight: 1.4 }}>
-                        {g.awayTeam.name} @ {g.homeTeam.name}
-                      </div>
-
-                      <div
-                        style={{
-                          marginTop: 8,
-                          fontSize: 20,
-                          fontWeight: 800,
-                          letterSpacing: "-0.02em",
-                        }}
-                      >
-                        <ScoreText
-                          value={`${g.awayTeam.score} - ${g.homeTeam.score}`}
-                          reveal={revealed}
-                        />
-                      </div>
-
-                      <div style={{ color: theme.muted, fontSize: 13, marginTop: 6 }}>
-                        {g.statusText}
-                      </div>
-                    </button>
-
-                    <button
-                      onClick={() => toggleFinalRevealForGame(g.id)}
-                      style={styles.button}
-                    >
-                      {revealed ? "Hide Final Score" : "Reveal Final Score"}
-                    </button>
-                  </div>
-                );
-          
           </div>
 
           <div style={{ minWidth: 0 }}>
@@ -1073,15 +1012,14 @@ function jumpToToday() {
                 >
                   <div style={styles.label}>Live Replay</div>
 
-                 <div
+      <div
   style={{
     display: "grid",
-    gridTemplateColumns: isMobile ? "1fr" : "300px 1fr",
-    gap: 20,
-    background: "#F8FAFC",
-    minHeight: "100vh",
-    padding: isMobile ? 12 : 20,
-    alignItems: "start",
+    gridTemplateColumns: isMobile ? "1fr" : "1fr auto 1fr",
+    alignItems: "center",
+    gap: 16,
+    marginTop: 10,
+    textAlign: isMobile ? "center" : "initial",
   }}
 >
                   
