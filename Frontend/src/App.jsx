@@ -335,154 +335,214 @@ function TeamColumn({ teamName, players }) {
 }
 
 function HomePage({ onChooseSport }) {
-  return (
-    <div style={landingStyles.page}>
-      <header style={landingStyles.header}>
-        <div style={landingStyles.brand}>Stat Sync</div>
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 950;
 
-        <div style={landingStyles.headerRight}>
-          <span style={landingStyles.headerPillLive}>NBA Live</span>
-          <span style={landingStyles.headerPill}>MLB Soon</span>
-          <span style={landingStyles.headerPill}>NFL Soon</span>
+  return (
+    <div style={promoStyles.page}>
+      <header style={promoStyles.header}>
+        <div style={promoStyles.logoWrap}>
+          <img src="/sts-logo.png" alt="Sports Stat Sync" style={promoStyles.logo} />
         </div>
+
+        <nav style={promoStyles.nav}>
+          <span style={promoStyles.navItem}>How It Works</span>
+          <span style={promoStyles.navItem}>Features</span>
+          <span style={promoStyles.navItem}>Supported Leagues</span>
+          <button onClick={() => onChooseSport("nba")} style={promoStyles.navButton}>
+            Get Started
+          </button>
+        </nav>
       </header>
 
-      <main style={landingStyles.hero}>
-        <div style={landingStyles.heroContent}>
-          <div style={landingStyles.badge}>Spoiler-safe sports sync</div>
+      <main
+        style={{
+          ...promoStyles.hero,
+          gridTemplateColumns: isMobile ? "1fr" : "0.95fr 1.05fr",
+        }}
+      >
+        <section style={promoStyles.leftColumn}>
+          <div style={promoStyles.brandBlock}>
+            <img src="/sts-logo.png" alt="Sports Stat Sync" style={promoStyles.heroLogo} />
+          </div>
 
-          <h1 style={landingStyles.title}>
-            Watch Delayed.
+          <h1 style={promoStyles.title}>
+            WATCH SPORTS
             <br />
-            Stay In Sync.
+            <span style={promoStyles.titleBlue}>ON YOUR TIME.</span>
+            <br />
+            STAY IN SYNC.
           </h1>
 
-          <p style={landingStyles.subtitle}>
-            Follow live-building scores, play-by-play, and box scores without
-            spoiling the game. Built for delayed viewers.
+          <p style={promoStyles.subtitle}>
+            Live game stats that sync with your delayed stream. No spoilers.
+            No surprises.
           </p>
 
-          <div style={landingStyles.ctaRow}>
-            <button
-              onClick={() => onChooseSport("nba")}
-              style={landingStyles.primaryButton}
-            >
-              Start Watching NBA
+          <div style={promoStyles.featureList}>
+            <div style={promoStyles.featureItem}>
+              <div style={promoStyles.featureIcon}>◉</div>
+              <div>
+                <div style={promoStyles.featureTitle}>Spoiler Free</div>
+                <div style={promoStyles.featureText}>
+                  Hide final scores and stay in the dark
+                </div>
+              </div>
+            </div>
+
+            <div style={promoStyles.featureItem}>
+              <div style={promoStyles.featureIcon}>▣</div>
+              <div>
+                <div style={promoStyles.featureTitle}>Real Time Stats</div>
+                <div style={promoStyles.featureText}>
+                  Box score builds as you watch
+                </div>
+              </div>
+            </div>
+
+            <div style={promoStyles.featureItem}>
+              <div style={promoStyles.featureIcon}>↻</div>
+              <div>
+                <div style={promoStyles.featureTitle}>Perfect Sync</div>
+                <div style={promoStyles.featureText}>
+                  Play-by-play in sync with your stream
+                </div>
+              </div>
+            </div>
+
+            <div style={promoStyles.featureItem}>
+              <div style={promoStyles.featureIcon}>◷</div>
+              <div>
+                <div style={promoStyles.featureTitle}>Easy To Use</div>
+                <div style={promoStyles.featureText}>
+                  Jump quarters and sync in seconds
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style={promoStyles.ctaRow}>
+            <button onClick={() => onChooseSport("nba")} style={promoStyles.primaryCta}>
+              Watch Games →
+            </button>
+
+            <button style={promoStyles.secondaryCta}>
+              How It Works ▶
             </button>
           </div>
-        </div>
 
-        <div style={landingStyles.previewCard}>
-          <div style={landingStyles.previewTop}>
-            <span style={landingStyles.previewLabel}>Live Preview</span>
-            <span style={landingStyles.previewClock}>Q2 • 07:43</span>
-          </div>
-
-          <div style={landingStyles.scoreRow}>
-            <div style={landingStyles.teamColumn}>
-              <div style={landingStyles.teamName}>Celtics</div>
-              <div style={landingStyles.teamMeta}>Away</div>
-            </div>
-
-            <div style={landingStyles.scoreBlock}>
-              <div style={landingStyles.score}>58 — 55</div>
-              <div style={landingStyles.scoreCaption}>Building with your stream</div>
-            </div>
-
-            <div style={landingStyles.teamColumn}>
-              <div style={landingStyles.teamName}>Raptors</div>
-              <div style={landingStyles.teamMeta}>Home</div>
+          <div style={promoStyles.supported}>
+            <div style={promoStyles.supportedLabel}>Supported leagues</div>
+            <div style={promoStyles.supportedRow}>
+              <span style={promoStyles.supportedLive}>NBA</span>
+              <span style={promoStyles.supportedSoon}>More coming soon:</span>
+              <span style={promoStyles.supportedSoon}>NFL</span>
+              <span style={promoStyles.supportedSoon}>MLB</span>
             </div>
           </div>
+        </section>
 
-          <div style={landingStyles.feed}>
-            <div style={landingStyles.feedRow}>
-              <span style={landingStyles.feedTime}>Q2 07:43</span>
-              <span style={landingStyles.feedText}>
-                Jaylen Brown makes 15-foot jumper
-              </span>
-              <span style={landingStyles.feedScore}>58-55</span>
+        <section style={promoStyles.rightColumn}>
+          <div style={promoStyles.previewTitleRow}>
+            <div style={promoStyles.previewLine}></div>
+            <div style={promoStyles.previewTitle}>SEE IT IN ACTION</div>
+            <div style={promoStyles.previewLine}></div>
+          </div>
+
+          <div
+            style={{
+              ...promoStyles.previewShell,
+              gridTemplateColumns: isMobile ? "1fr" : "1.05fr 0.95fr",
+            }}
+          >
+            <div style={promoStyles.streamPanel}>
+              <div style={promoStyles.panelHeader}>YOUR DELAYED STREAM</div>
+
+              <div style={promoStyles.videoMock}>
+                <div style={promoStyles.playButton}>▶</div>
+                <div style={promoStyles.videoScoreBug}>
+                  BOS 85 &nbsp; LAL 78 &nbsp; 3RD &nbsp; 4:21
+                </div>
+              </div>
             </div>
 
-            <div style={landingStyles.feedRow}>
-              <span style={landingStyles.feedTime}>Q2 08:01</span>
-              <span style={landingStyles.feedText}>
-                Derrick White defensive rebound
-              </span>
-              <span style={landingStyles.feedScore}>56-55</span>
-            </div>
+            <div style={promoStyles.statsPanel}>
+              <div style={promoStyles.panelHeader}>STAT SYNC – LIVE STATS</div>
 
-            <div style={landingStyles.feedRow}>
-              <span style={landingStyles.feedTime}>Q2 08:10</span>
-              <span style={landingStyles.feedText}>
-                Scottie Barnes misses 3-point shot
-              </span>
-              <span style={landingStyles.feedScore}>56-55</span>
+              <div style={promoStyles.scoreTop}>
+                <div style={promoStyles.scoreTeam}>
+                  <div style={promoStyles.scoreTeamName}>BOS</div>
+                  <div style={promoStyles.scoreTeamPoints}>85</div>
+                </div>
+
+                <div style={promoStyles.centerClock}>
+                  <div style={promoStyles.period}>3RD</div>
+                  <div style={promoStyles.clock}>4:21</div>
+                  <div style={promoStyles.liveDot}>• LIVE</div>
+                </div>
+
+                <div style={promoStyles.scoreTeam}>
+                  <div style={promoStyles.scoreTeamName}>LAL</div>
+                  <div style={promoStyles.scoreTeamPoints}>78</div>
+                </div>
+              </div>
+
+              <div style={promoStyles.tabs}>
+                <span style={promoStyles.tabActive}>BOX SCORE</span>
+                <span style={promoStyles.tab}>PLAY BY PLAY</span>
+                <span style={promoStyles.tab}>TEAM STATS</span>
+              </div>
+
+              <div style={promoStyles.boxScoreMini}>
+                <div style={promoStyles.boxHeader}>BOSTON CELTICS</div>
+                <div style={promoStyles.miniRow}><span>J. Tatum</span><span>24 PTS</span></div>
+                <div style={promoStyles.miniRow}><span>J. Brown</span><span>18 PTS</span></div>
+                <div style={promoStyles.miniRow}><span>D. White</span><span>12 PTS</span></div>
+
+                <div style={{ ...promoStyles.boxHeader, marginTop: 14 }}>LOS ANGELES LAKERS</div>
+                <div style={promoStyles.miniRow}><span>L. James</span><span>22 PTS</span></div>
+                <div style={promoStyles.miniRow}><span>A. Davis</span><span>20 PTS</span></div>
+                <div style={promoStyles.miniRow}><span>D. Russell</span><span>11 PTS</span></div>
+              </div>
+
+              <div style={promoStyles.syncedBar}>
+                <span style={promoStyles.syncedBadge}>✓ SYNCED</span>
+                <span style={promoStyles.syncedText}>Stats are in sync with your stream</span>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       </main>
 
-      <section style={landingStyles.section}>
-        <div style={landingStyles.sectionLabel}>How it works</div>
-        <h2 style={landingStyles.sectionTitle}>Built for delayed viewing</h2>
+      <section style={promoStyles.bottomSection}>
+        <div style={promoStyles.bottomTitle}>BUILT FOR FANS WHO WATCH ON DELAY</div>
 
-        <div style={landingStyles.stepsGrid}>
-          <div style={landingStyles.stepCard}>
-            <div style={landingStyles.stepNumber}>1</div>
-            <div style={landingStyles.stepTitle}>Pick a game</div>
-            <div style={landingStyles.stepText}>
-              Choose your matchup without revealing the final score.
-            </div>
+        <div
+          style={{
+            ...promoStyles.bottomGrid,
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(4, minmax(0, 1fr))",
+          }}
+        >
+          <div style={promoStyles.bottomCard}>
+            <div style={promoStyles.bottomCardTitle}>Perfect for international fans</div>
+            <div style={promoStyles.bottomCardText}>Australia, Europe, Asia and more</div>
           </div>
 
-          <div style={landingStyles.stepCard}>
-            <div style={landingStyles.stepNumber}>2</div>
-            <div style={landingStyles.stepTitle}>Start your stream</div>
-            <div style={landingStyles.stepText}>
-              Begin watching whenever you are ready.
-            </div>
+          <div style={promoStyles.bottomCard}>
+            <div style={promoStyles.bottomCardTitle}>Works on any device</div>
+            <div style={promoStyles.bottomCardText}>Phone, tablet, laptop, whatever you use</div>
           </div>
 
-          <div style={landingStyles.stepCard}>
-            <div style={landingStyles.stepNumber}>3</div>
-            <div style={landingStyles.stepTitle}>Stay in sync</div>
-            <div style={landingStyles.stepText}>
-              Watch the score, game clock, and stats build naturally with your feed.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section style={landingStyles.section}>
-        <div style={landingStyles.sectionLabel}>Sports</div>
-        <h2 style={landingStyles.sectionTitle}>Available now and coming soon</h2>
-
-        <div style={landingStyles.sportsGrid}>
-          <button
-            onClick={() => onChooseSport("nba")}
-            style={landingStyles.sportCardActive}
-          >
-            <div style={landingStyles.sportName}>NBA</div>
-            <div style={landingStyles.sportStatusLive}>Available now</div>
-          </button>
-
-          <div style={landingStyles.sportCard}>
-            <div style={landingStyles.sportName}>MLB</div>
-            <div style={landingStyles.sportStatusSoon}>Coming soon</div>
+          <div style={promoStyles.bottomCard}>
+            <div style={promoStyles.bottomCardTitle}>Spoiler protection</div>
+            <div style={promoStyles.bottomCardText}>We hide the final score until you’re caught up</div>
           </div>
 
-          <div style={landingStyles.sportCard}>
-            <div style={landingStyles.sportName}>NFL</div>
-            <div style={landingStyles.sportStatusSoon}>Coming soon</div>
+          <div style={promoStyles.bottomCard}>
+            <div style={promoStyles.bottomCardTitle}>Lightning fast</div>
+            <div style={promoStyles.bottomCardText}>Real-time updates with zero lag</div>
           </div>
         </div>
       </section>
-
-      <footer style={landingStyles.footer}>
-        <div style={landingStyles.footerBrand}>Stat Sync</div>
-        <div style={landingStyles.footerText}>Watch Delayed. Stay In Sync.</div>
-      </footer>
     </div>
   );
 }
@@ -1593,6 +1653,459 @@ const landingStyles = {
     color: "#64748B",
     fontSize: 14,
     marginBottom: 4,
+  },
+};
+const promoStyles = {
+  page: {
+    minHeight: "100vh",
+    background:
+      "radial-gradient(circle at 50% 35%, rgba(0,72,255,0.18) 0%, rgba(0,0,0,0) 35%), linear-gradient(180deg, #02040a 0%, #030915 45%, #01040a 100%)",
+    color: "white",
+    fontFamily: "Inter, Arial, sans-serif",
+  },
+
+  header: {
+    maxWidth: 1320,
+    margin: "0 auto",
+    padding: "18px 24px 8px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: 20,
+    flexWrap: "wrap",
+  },
+
+  logoWrap: {
+    display: "flex",
+    alignItems: "center",
+  },
+
+  logo: {
+    width: 190,
+    maxWidth: "100%",
+    objectFit: "contain",
+  },
+
+  nav: {
+    display: "flex",
+    alignItems: "center",
+    gap: 18,
+    flexWrap: "wrap",
+  },
+
+  navItem: {
+    fontSize: 14,
+    fontWeight: 700,
+    letterSpacing: "0.03em",
+    color: "#E2E8F0",
+  },
+
+  navButton: {
+    background: "#1D6DFF",
+    color: "white",
+    border: "none",
+    borderRadius: 10,
+    padding: "14px 24px",
+    fontSize: 15,
+    fontWeight: 800,
+    cursor: "pointer",
+    boxShadow: "0 12px 24px rgba(29,109,255,0.28)",
+  },
+
+  hero: {
+    maxWidth: 1320,
+    margin: "0 auto",
+    padding: "18px 24px 24px",
+    display: "grid",
+    gap: 30,
+    alignItems: "start",
+  },
+
+  leftColumn: {
+    paddingTop: 8,
+  },
+
+  brandBlock: {
+    marginBottom: 18,
+  },
+
+  heroLogo: {
+    width: 260,
+    maxWidth: "100%",
+    objectFit: "contain",
+  },
+
+  title: {
+    margin: "10px 0 0",
+    fontSize: "clamp(50px, 7vw, 88px)",
+    lineHeight: 0.95,
+    fontWeight: 900,
+    letterSpacing: "-0.05em",
+    fontStyle: "italic",
+    color: "white",
+  },
+
+  titleBlue: {
+    color: "#1D6DFF",
+  },
+
+  subtitle: {
+    marginTop: 20,
+    maxWidth: 560,
+    fontSize: 19,
+    lineHeight: 1.6,
+    color: "#E2E8F0",
+  },
+
+  featureList: {
+    marginTop: 28,
+    display: "grid",
+    gap: 16,
+  },
+
+  featureItem: {
+    display: "flex",
+    gap: 14,
+    alignItems: "flex-start",
+  },
+
+  featureIcon: {
+    width: 34,
+    height: 34,
+    borderRadius: "50%",
+    border: "2px solid #1D6DFF",
+    color: "#1D6DFF",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontWeight: 900,
+    flexShrink: 0,
+  },
+
+  featureTitle: {
+    fontSize: 16,
+    fontWeight: 800,
+    textTransform: "uppercase",
+    color: "#1D6DFF",
+    marginBottom: 4,
+  },
+
+  featureText: {
+    color: "#D1D5DB",
+    fontSize: 16,
+    lineHeight: 1.5,
+  },
+
+  ctaRow: {
+    marginTop: 28,
+    display: "flex",
+    gap: 14,
+    flexWrap: "wrap",
+  },
+
+  primaryCta: {
+    background: "#1D6DFF",
+    color: "white",
+    border: "none",
+    borderRadius: 12,
+    padding: "18px 28px",
+    fontSize: 18,
+    fontWeight: 900,
+    cursor: "pointer",
+    boxShadow: "0 14px 28px rgba(29,109,255,0.25)",
+  },
+
+  secondaryCta: {
+    background: "transparent",
+    color: "white",
+    border: "1px solid rgba(255,255,255,0.2)",
+    borderRadius: 12,
+    padding: "18px 24px",
+    fontSize: 18,
+    fontWeight: 800,
+    cursor: "pointer",
+  },
+
+  supported: {
+    marginTop: 34,
+  },
+
+  supportedLabel: {
+    fontSize: 13,
+    fontWeight: 700,
+    color: "#A5B4FC",
+    textTransform: "uppercase",
+    letterSpacing: "0.08em",
+    marginBottom: 10,
+  },
+
+  supportedRow: {
+    display: "flex",
+    gap: 16,
+    alignItems: "center",
+    flexWrap: "wrap",
+  },
+
+  supportedLive: {
+    fontSize: 24,
+    fontWeight: 900,
+    color: "white",
+  },
+
+  supportedSoon: {
+    fontSize: 18,
+    fontWeight: 700,
+    color: "#CBD5E1",
+  },
+
+  rightColumn: {
+    minWidth: 0,
+  },
+
+  previewTitleRow: {
+    display: "flex",
+    alignItems: "center",
+    gap: 16,
+    marginBottom: 12,
+  },
+
+  previewLine: {
+    flex: 1,
+    height: 2,
+    background: "linear-gradient(90deg, rgba(29,109,255,0), rgba(29,109,255,1), rgba(29,109,255,0))",
+  },
+
+  previewTitle: {
+    fontSize: 17,
+    fontWeight: 900,
+    color: "white",
+    letterSpacing: "0.04em",
+  },
+
+  previewShell: {
+    display: "grid",
+    gap: 0,
+    border: "1px solid rgba(29,109,255,0.55)",
+    borderRadius: 18,
+    overflow: "hidden",
+    background: "rgba(0, 0, 0, 0.55)",
+    boxShadow: "0 18px 50px rgba(0,0,0,0.4)",
+  },
+
+  streamPanel: {
+    borderRight: "1px solid rgba(29,109,255,0.3)",
+    background: "rgba(0,0,0,0.45)",
+  },
+
+  statsPanel: {
+    background: "rgba(4,10,25,0.95)",
+  },
+
+  panelHeader: {
+    background: "#124FC9",
+    color: "white",
+    textAlign: "center",
+    padding: "14px 16px",
+    fontSize: 14,
+    fontWeight: 900,
+    letterSpacing: "0.05em",
+  },
+
+  videoMock: {
+    position: "relative",
+    minHeight: 560,
+    background:
+      "linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80') center/cover",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  playButton: {
+    width: 90,
+    height: 90,
+    borderRadius: "50%",
+    background: "#1D6DFF",
+    color: "white",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: 34,
+    fontWeight: 900,
+    boxShadow: "0 18px 40px rgba(29,109,255,0.35)",
+  },
+
+  videoScoreBug: {
+    position: "absolute",
+    bottom: 18,
+    left: 18,
+    right: 18,
+    background: "rgba(0,0,0,0.8)",
+    color: "white",
+    padding: "10px 14px",
+    borderRadius: 10,
+    fontWeight: 800,
+    fontSize: 16,
+    textAlign: "center",
+  },
+
+  scoreTop: {
+    display: "grid",
+    gridTemplateColumns: "1fr auto 1fr",
+    alignItems: "center",
+    gap: 12,
+    padding: "22px 16px 14px",
+  },
+
+  scoreTeam: {
+    textAlign: "center",
+  },
+
+  scoreTeamName: {
+    fontSize: 24,
+    fontWeight: 900,
+    color: "white",
+  },
+
+  scoreTeamPoints: {
+    fontSize: 50,
+    fontWeight: 900,
+    color: "white",
+    lineHeight: 1,
+    marginTop: 4,
+  },
+
+  centerClock: {
+    textAlign: "center",
+  },
+
+  period: {
+    fontSize: 18,
+    fontWeight: 900,
+    color: "#E2E8F0",
+  },
+
+  clock: {
+    fontSize: 36,
+    fontWeight: 900,
+    color: "white",
+    lineHeight: 1.1,
+  },
+
+  liveDot: {
+    fontSize: 14,
+    fontWeight: 800,
+    color: "#22C55E",
+    marginTop: 4,
+  },
+
+  tabs: {
+    display: "flex",
+    justifyContent: "space-around",
+    borderTop: "1px solid rgba(255,255,255,0.08)",
+    borderBottom: "1px solid rgba(255,255,255,0.08)",
+    padding: "14px 10px",
+    gap: 10,
+    flexWrap: "wrap",
+  },
+
+  tabActive: {
+    color: "white",
+    fontWeight: 900,
+    fontSize: 14,
+  },
+
+  tab: {
+    color: "#CBD5E1",
+    fontWeight: 800,
+    fontSize: 14,
+  },
+
+  boxScoreMini: {
+    padding: 16,
+  },
+
+  boxHeader: {
+    fontSize: 18,
+    fontWeight: 900,
+    color: "white",
+    marginBottom: 10,
+  },
+
+  miniRow: {
+    display: "flex",
+    justifyContent: "space-between",
+    gap: 12,
+    color: "#E5E7EB",
+    padding: "9px 0",
+    borderBottom: "1px solid rgba(255,255,255,0.06)",
+    fontSize: 15,
+    fontWeight: 700,
+  },
+
+  syncedBar: {
+    margin: 16,
+    border: "1px solid rgba(29,109,255,0.3)",
+    borderRadius: 12,
+    padding: "14px 16px",
+    display: "flex",
+    justifyContent: "space-between",
+    gap: 12,
+    alignItems: "center",
+    flexWrap: "wrap",
+    background: "rgba(0,0,0,0.25)",
+  },
+
+  syncedBadge: {
+    color: "#22C55E",
+    fontWeight: 900,
+    fontSize: 18,
+  },
+
+  syncedText: {
+    color: "#CBD5E1",
+    fontWeight: 700,
+    fontSize: 15,
+  },
+
+  bottomSection: {
+    maxWidth: 1320,
+    margin: "20px auto 0",
+    padding: "0 24px 40px",
+  },
+
+  bottomTitle: {
+    textAlign: "center",
+    fontSize: 28,
+    fontWeight: 900,
+    color: "white",
+    letterSpacing: "0.03em",
+    marginBottom: 20,
+  },
+
+  bottomGrid: {
+    display: "grid",
+    gap: 16,
+  },
+
+  bottomCard: {
+    background: "rgba(5,10,22,0.9)",
+    border: "1px solid rgba(29,109,255,0.25)",
+    borderRadius: 18,
+    padding: 24,
+  },
+
+  bottomCardTitle: {
+    color: "#1D6DFF",
+    fontSize: 20,
+    fontWeight: 900,
+    marginBottom: 10,
+  },
+
+  bottomCardText: {
+    color: "#E5E7EB",
+    fontSize: 16,
+    lineHeight: 1.6,
   },
 };
 export default App;
