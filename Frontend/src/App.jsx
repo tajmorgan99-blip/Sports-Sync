@@ -385,7 +385,7 @@ function HomePage({ onChooseSport }) {
             ...homeHeroStyles.heroSection,
             minHeight: isMobile ? 760 : 980,
             backgroundImage:
-              "linear-gradient(to bottom, rgba(1,6,18,0.50), rgba(1,6,18,0.72)), url('/hero-homepage.png')",
+              "linear-gradient(to bottom, rgba(1,6,18,0.50), rgba(1,6,18,0.72)), url('/hero-homepage.PNG')",
           }}
         >
           <div style={homeHeroStyles.heroInner}>
