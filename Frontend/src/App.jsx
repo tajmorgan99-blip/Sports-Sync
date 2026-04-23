@@ -335,214 +335,172 @@ function TeamColumn({ teamName, players }) {
 }
 
 function HomePage({ onChooseSport }) {
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 950;
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 900;
 
   return (
-    <div style={promoStyles.page}>
-      <header style={promoStyles.header}>
-        <div style={promoStyles.logoWrap}>
-          <img src="/sts-logo.png" alt="Sports Stat Sync" style={promoStyles.logo} />
+    <div style={homeHeroStyles.page}>
+      <header style={homeHeroStyles.header}>
+        <div style={homeHeroStyles.logoWrap}>
+          <img
+            src="/sts-logo.png"
+            alt="Sports Stat Sync"
+            style={homeHeroStyles.logo}
+          />
         </div>
 
-        <nav style={promoStyles.nav}>
-          <span style={promoStyles.navItem}>How It Works</span>
-          <span style={promoStyles.navItem}>Features</span>
-          <span style={promoStyles.navItem}>Supported Leagues</span>
-          <button onClick={() => onChooseSport("nba")} style={promoStyles.navButton}>
+        <div style={homeHeroStyles.headerLinks}>
+          <button
+            onClick={() => onChooseSport("nba")}
+            style={homeHeroStyles.headerLink}
+          >
+            NBA
+          </button>
+
+          <button
+            onClick={() => onChooseSport("nfl")}
+            style={homeHeroStyles.headerLink}
+          >
+            NFL
+          </button>
+
+          <button
+            onClick={() => onChooseSport("mlb")}
+            style={homeHeroStyles.headerLink}
+          >
+            MLB
+          </button>
+
+          <button
+            onClick={() => onChooseSport("nba")}
+            style={homeHeroStyles.getStartedButton}
+          >
             Get Started
           </button>
-        </nav>
+        </div>
       </header>
 
-      <main
-        style={{
-          ...promoStyles.hero,
-          gridTemplateColumns: isMobile ? "1fr" : "0.95fr 1.05fr",
-        }}
-      >
-        <section style={promoStyles.leftColumn}>
-          <div style={promoStyles.brandBlock}>
-            <img src="/sts-logo.png" alt="Sports Stat Sync" style={promoStyles.heroLogo} />
-          </div>
-
-          <h1 style={promoStyles.title}>
-            WATCH SPORTS
-            <br />
-            <span style={promoStyles.titleBlue}>ON YOUR TIME.</span>
-            <br />
-            STAY IN SYNC.
-          </h1>
-
-          <p style={promoStyles.subtitle}>
-            Live game stats that sync with your delayed stream. No spoilers.
-            No surprises.
-          </p>
-
-          <div style={promoStyles.featureList}>
-            <div style={promoStyles.featureItem}>
-              <div style={promoStyles.featureIcon}>◉</div>
-              <div>
-                <div style={promoStyles.featureTitle}>Spoiler Free</div>
-                <div style={promoStyles.featureText}>
-                  Hide final scores and stay in the dark
-                </div>
-              </div>
+      <main style={homeHeroStyles.main}>
+        <section
+          style={{
+            ...homeHeroStyles.heroSection,
+            minHeight: isMobile ? 760 : 980,
+            backgroundImage:
+              "linear-gradient(to bottom, rgba(1,6,18,0.50), rgba(1,6,18,0.72)), url('/hero-homepage.jpg')",
+          }}
+        >
+          <div style={homeHeroStyles.heroInner}>
+            <div style={homeHeroStyles.heroOverlayLogoWrap}>
+              <img
+                src="/sts-logo.png"
+                alt="Sports Stat Sync"
+                style={homeHeroStyles.heroOverlayLogo}
+              />
             </div>
 
-            <div style={promoStyles.featureItem}>
-              <div style={promoStyles.featureIcon}>▣</div>
-              <div>
-                <div style={promoStyles.featureTitle}>Real Time Stats</div>
-                <div style={promoStyles.featureText}>
-                  Box score builds as you watch
-                </div>
-              </div>
-            </div>
+            <h1 style={homeHeroStyles.heroTitle}>
+              WATCH SPORTS
+              <br />
+              <span style={homeHeroStyles.heroBlue}>ON YOUR TIME.</span>
+              <br />
+              STAY IN SYNC.
+            </h1>
 
-            <div style={promoStyles.featureItem}>
-              <div style={promoStyles.featureIcon}>↻</div>
-              <div>
-                <div style={promoStyles.featureTitle}>Perfect Sync</div>
-                <div style={promoStyles.featureText}>
-                  Play-by-play in sync with your stream
-                </div>
-              </div>
-            </div>
+            <p style={homeHeroStyles.heroSubtitle}>
+              Live game stats that sync with your delayed stream.
+              <br />
+              No spoilers. No surprises.
+            </p>
 
-            <div style={promoStyles.featureItem}>
-              <div style={promoStyles.featureIcon}>◷</div>
-              <div>
-                <div style={promoStyles.featureTitle}>Easy To Use</div>
-                <div style={promoStyles.featureText}>
-                  Jump quarters and sync in seconds
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div style={promoStyles.ctaRow}>
-            <button onClick={() => onChooseSport("nba")} style={promoStyles.primaryCta}>
-              Watch Games →
-            </button>
-
-            <button style={promoStyles.secondaryCta}>
-              How It Works ▶
+            <button
+              onClick={() => onChooseSport("nba")}
+              style={homeHeroStyles.watchButton}
+            >
+              ▶ WATCH NBA NOW
             </button>
           </div>
+        </section>
 
-          <div style={promoStyles.supported}>
-            <div style={promoStyles.supportedLabel}>Supported leagues</div>
-            <div style={promoStyles.supportedRow}>
-              <span style={promoStyles.supportedLive}>NBA</span>
-              <span style={promoStyles.supportedSoon}>More coming soon:</span>
-              <span style={promoStyles.supportedSoon}>NFL</span>
-              <span style={promoStyles.supportedSoon}>MLB</span>
+        <section
+          style={{
+            ...homeHeroStyles.featureStrip,
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
+          }}
+        >
+          <div style={homeHeroStyles.featureCard}>
+            <div style={homeHeroStyles.featureIcon}>⊘</div>
+            <div>
+              <div style={homeHeroStyles.featureTitle}>SPOILER FREE</div>
+              <div style={homeHeroStyles.featureText}>
+                Hide final scores and stay in the dark
+              </div>
+            </div>
+          </div>
+
+          <div style={homeHeroStyles.featureCard}>
+            <div style={homeHeroStyles.featureIcon}>▥</div>
+            <div>
+              <div style={homeHeroStyles.featureTitle}>REAL TIME STATS</div>
+              <div style={homeHeroStyles.featureText}>
+                Box score builds as you watch
+              </div>
+            </div>
+          </div>
+
+          <div style={homeHeroStyles.featureCard}>
+            <div style={homeHeroStyles.featureIcon}>↻</div>
+            <div>
+              <div style={homeHeroStyles.featureTitle}>PERFECT SYNC</div>
+              <div style={homeHeroStyles.featureText}>
+                Play-by-play in sync with your stream
+              </div>
             </div>
           </div>
         </section>
 
-        <section style={promoStyles.rightColumn}>
-          <div style={promoStyles.previewTitleRow}>
-            <div style={promoStyles.previewLine}></div>
-            <div style={promoStyles.previewTitle}>SEE IT IN ACTION</div>
-            <div style={promoStyles.previewLine}></div>
-          </div>
+        <section style={homeHeroStyles.sportSection}>
+          <div style={homeHeroStyles.sportSectionTitle}>CHOOSE YOUR SPORT</div>
 
           <div
             style={{
-              ...promoStyles.previewShell,
-              gridTemplateColumns: isMobile ? "1fr" : "1.05fr 0.95fr",
+              ...homeHeroStyles.sportGrid,
+              gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
             }}
           >
-            <div style={promoStyles.streamPanel}>
-              <div style={promoStyles.panelHeader}>YOUR DELAYED STREAM</div>
+            <button
+              onClick={() => onChooseSport("nba")}
+              style={{
+                ...homeHeroStyles.sportCard,
+                ...homeHeroStyles.sportCardActive,
+              }}
+            >
+              <div style={homeHeroStyles.sportLogo}>NBA</div>
+              <div style={homeHeroStyles.sportName}>NBA</div>
+              <div style={homeHeroStyles.availableNow}>AVAILABLE NOW</div>
+            </button>
 
-              <div style={promoStyles.videoMock}>
-                <div style={promoStyles.playButton}>▶</div>
-                <div style={promoStyles.videoScoreBug}>
-                  BOS 85 &nbsp; LAL 78 &nbsp; 3RD &nbsp; 4:21
-                </div>
-              </div>
+            <div style={homeHeroStyles.sportCard}>
+              <div style={homeHeroStyles.sportLogo}>NFL</div>
+              <div style={homeHeroStyles.sportName}>NFL</div>
+              <div style={homeHeroStyles.comingSoon}>COMING SOON</div>
             </div>
 
-            <div style={promoStyles.statsPanel}>
-              <div style={promoStyles.panelHeader}>STAT SYNC – LIVE STATS</div>
-
-              <div style={promoStyles.scoreTop}>
-                <div style={promoStyles.scoreTeam}>
-                  <div style={promoStyles.scoreTeamName}>BOS</div>
-                  <div style={promoStyles.scoreTeamPoints}>85</div>
-                </div>
-
-                <div style={promoStyles.centerClock}>
-                  <div style={promoStyles.period}>3RD</div>
-                  <div style={promoStyles.clock}>4:21</div>
-                  <div style={promoStyles.liveDot}>• LIVE</div>
-                </div>
-
-                <div style={promoStyles.scoreTeam}>
-                  <div style={promoStyles.scoreTeamName}>LAL</div>
-                  <div style={promoStyles.scoreTeamPoints}>78</div>
-                </div>
-              </div>
-
-              <div style={promoStyles.tabs}>
-                <span style={promoStyles.tabActive}>BOX SCORE</span>
-                <span style={promoStyles.tab}>PLAY BY PLAY</span>
-                <span style={promoStyles.tab}>TEAM STATS</span>
-              </div>
-
-              <div style={promoStyles.boxScoreMini}>
-                <div style={promoStyles.boxHeader}>BOSTON CELTICS</div>
-                <div style={promoStyles.miniRow}><span>J. Tatum</span><span>24 PTS</span></div>
-                <div style={promoStyles.miniRow}><span>J. Brown</span><span>18 PTS</span></div>
-                <div style={promoStyles.miniRow}><span>D. White</span><span>12 PTS</span></div>
-
-                <div style={{ ...promoStyles.boxHeader, marginTop: 14 }}>LOS ANGELES LAKERS</div>
-                <div style={promoStyles.miniRow}><span>L. James</span><span>22 PTS</span></div>
-                <div style={promoStyles.miniRow}><span>A. Davis</span><span>20 PTS</span></div>
-                <div style={promoStyles.miniRow}><span>D. Russell</span><span>11 PTS</span></div>
-              </div>
-
-              <div style={promoStyles.syncedBar}>
-                <span style={promoStyles.syncedBadge}>✓ SYNCED</span>
-                <span style={promoStyles.syncedText}>Stats are in sync with your stream</span>
-              </div>
+            <div style={homeHeroStyles.sportCard}>
+              <div style={homeHeroStyles.sportLogo}>MLB</div>
+              <div style={homeHeroStyles.sportName}>MLB</div>
+              <div style={homeHeroStyles.comingSoon}>COMING SOON</div>
             </div>
           </div>
         </section>
+
+        <footer style={homeHeroStyles.footer}>
+          <div>© 2024 Sports Stat Sync. All rights reserved.</div>
+          <div style={homeHeroStyles.footerLinks}>
+            <span>Privacy Policy</span>
+            <span>|</span>
+            <span>Terms of Service</span>
+          </div>
+        </footer>
       </main>
-
-      <section style={promoStyles.bottomSection}>
-        <div style={promoStyles.bottomTitle}>BUILT FOR FANS WHO WATCH ON DELAY</div>
-
-        <div
-          style={{
-            ...promoStyles.bottomGrid,
-            gridTemplateColumns: isMobile ? "1fr" : "repeat(4, minmax(0, 1fr))",
-          }}
-        >
-          <div style={promoStyles.bottomCard}>
-            <div style={promoStyles.bottomCardTitle}>Perfect for international fans</div>
-            <div style={promoStyles.bottomCardText}>Australia, Europe, Asia and more</div>
-          </div>
-
-          <div style={promoStyles.bottomCard}>
-            <div style={promoStyles.bottomCardTitle}>Works on any device</div>
-            <div style={promoStyles.bottomCardText}>Phone, tablet, laptop, whatever you use</div>
-          </div>
-
-          <div style={promoStyles.bottomCard}>
-            <div style={promoStyles.bottomCardTitle}>Spoiler protection</div>
-            <div style={promoStyles.bottomCardText}>We hide the final score until you’re caught up</div>
-          </div>
-
-          <div style={promoStyles.bottomCard}>
-            <div style={promoStyles.bottomCardTitle}>Lightning fast</div>
-            <div style={promoStyles.bottomCardText}>Real-time updates with zero lag</div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
@@ -2515,5 +2473,271 @@ gridTemplateColumns:
     color: "#94A3B8",
     fontSize: 14,
     marginBottom: 4,
+  },
+};
+const homeHeroStyles = {
+  page: {
+    minHeight: "100vh",
+    background: "#01060f",
+    color: "white",
+    fontFamily: "Inter, Arial, sans-serif",
+  },
+
+  header: {
+    maxWidth: 1280,
+    margin: "0 auto",
+    padding: "18px 24px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: 16,
+    flexWrap: "wrap",
+  },
+
+  logoWrap: {
+    display: "flex",
+    alignItems: "center",
+  },
+
+  logo: {
+    width: 150,
+    maxWidth: "100%",
+    objectFit: "contain",
+  },
+
+  headerLinks: {
+    display: "flex",
+    alignItems: "center",
+    gap: 14,
+    flexWrap: "wrap",
+  },
+
+  headerLink: {
+    background: "transparent",
+    border: "none",
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: 700,
+    cursor: "pointer",
+    padding: "8px 4px",
+  },
+
+  getStartedButton: {
+    background: "#1368FF",
+    border: "none",
+    color: "white",
+    fontSize: 16,
+    fontWeight: 800,
+    borderRadius: 12,
+    padding: "14px 22px",
+    cursor: "pointer",
+    boxShadow: "0 12px 30px rgba(19,104,255,0.28)",
+  },
+
+  main: {
+    maxWidth: 1280,
+    margin: "0 auto",
+    padding: "0 24px 40px",
+  },
+
+  heroSection: {
+    borderRadius: 24,
+    overflow: "hidden",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    border: "1px solid rgba(45,110,255,0.22)",
+    boxShadow: "0 20px 60px rgba(0,0,0,0.45)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  heroInner: {
+    width: "100%",
+    maxWidth: 900,
+    padding: "56px 24px 70px",
+    textAlign: "center",
+  },
+
+  heroOverlayLogoWrap: {
+    marginBottom: 22,
+  },
+
+  heroOverlayLogo: {
+    width: 320,
+    maxWidth: "90%",
+    objectFit: "contain",
+  },
+
+  heroTitle: {
+    margin: 0,
+    fontSize: "clamp(46px, 8vw, 96px)",
+    lineHeight: 0.95,
+    fontWeight: 900,
+    fontStyle: "italic",
+    letterSpacing: "-0.05em",
+    color: "#FFFFFF",
+    textShadow: "0 8px 24px rgba(0,0,0,0.4)",
+  },
+
+  heroBlue: {
+    color: "#146BFF",
+  },
+
+  heroSubtitle: {
+    marginTop: 26,
+    fontSize: "clamp(18px, 2vw, 24px)",
+    lineHeight: 1.55,
+    color: "#E5E7EB",
+    textShadow: "0 4px 14px rgba(0,0,0,0.35)",
+  },
+
+  watchButton: {
+    marginTop: 30,
+    background: "#1368FF",
+    color: "white",
+    border: "none",
+    borderRadius: 14,
+    padding: "20px 34px",
+    fontSize: 20,
+    fontWeight: 900,
+    cursor: "pointer",
+    boxShadow: "0 16px 34px rgba(19,104,255,0.34)",
+  },
+
+  featureStrip: {
+    marginTop: 26,
+    display: "grid",
+    gap: 18,
+    borderTop: "1px solid rgba(45,110,255,0.18)",
+    borderBottom: "1px solid rgba(45,110,255,0.18)",
+    background: "rgba(2,8,20,0.9)",
+    borderRadius: 20,
+    padding: "24px 22px",
+  },
+
+  featureCard: {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: 16,
+    padding: "10px 6px",
+  },
+
+  featureIcon: {
+    width: 44,
+    height: 44,
+    borderRadius: "50%",
+    border: "2px solid #1368FF",
+    color: "#1368FF",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontWeight: 900,
+    fontSize: 22,
+    flexShrink: 0,
+  },
+
+  featureTitle: {
+    color: "#FFFFFF",
+    fontSize: 18,
+    fontWeight: 900,
+    marginBottom: 6,
+    letterSpacing: "0.03em",
+  },
+
+  featureText: {
+    color: "#D1D5DB",
+    fontSize: 17,
+    lineHeight: 1.45,
+  },
+
+  sportSection: {
+    marginTop: 30,
+    borderRadius: 22,
+    border: "1px solid rgba(45,110,255,0.2)",
+    background: "rgba(2,8,20,0.92)",
+    padding: "26px 22px 28px",
+  },
+
+  sportSectionTitle: {
+    textAlign: "center",
+    color: "#FFFFFF",
+    fontSize: 28,
+    fontWeight: 900,
+    letterSpacing: "0.18em",
+    marginBottom: 22,
+  },
+
+  sportGrid: {
+    display: "grid",
+    gap: 18,
+  },
+
+  sportCard: {
+    background: "rgba(255,255,255,0.02)",
+    border: "1px solid rgba(255,255,255,0.12)",
+    borderRadius: 18,
+    padding: "34px 20px",
+    textAlign: "center",
+    color: "white",
+  },
+
+  sportCardActive: {
+    border: "2px solid #1368FF",
+    boxShadow: "0 0 0 1px rgba(19,104,255,0.15), 0 18px 38px rgba(19,104,255,0.12)",
+    cursor: "pointer",
+  },
+
+  sportLogo: {
+    fontSize: 48,
+    fontWeight: 900,
+    color: "#FFFFFF",
+    marginBottom: 18,
+    letterSpacing: "-0.03em",
+  },
+
+  sportName: {
+    fontSize: 56,
+    fontWeight: 900,
+    color: "#FFFFFF",
+    marginBottom: 18,
+    letterSpacing: "-0.04em",
+  },
+
+  availableNow: {
+    display: "inline-block",
+    background: "#1368FF",
+    color: "white",
+    fontSize: 24,
+    fontWeight: 900,
+    padding: "12px 22px",
+    borderRadius: 12,
+  },
+
+  comingSoon: {
+    display: "inline-block",
+    background: "#2A2F37",
+    color: "#D1D5DB",
+    fontSize: 24,
+    fontWeight: 900,
+    padding: "12px 22px",
+    borderRadius: 12,
+  },
+
+  footer: {
+    marginTop: 24,
+    textAlign: "center",
+    color: "#D1D5DB",
+    fontSize: 16,
+    paddingBottom: 18,
+  },
+
+  footerLinks: {
+    marginTop: 10,
+    display: "flex",
+    justifyContent: "center",
+    gap: 12,
+    flexWrap: "wrap",
+    color: "#79A8FF",
   },
 };
