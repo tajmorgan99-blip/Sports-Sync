@@ -374,7 +374,7 @@ function HomePage({ onChooseSport }) {
             onClick={() => onChooseSport("nba")}
             style={homeHeroStyles.getStartedButton}
           >
-            Get Started
+            ▶ Watch NBA Now
           </button>
         </div>
       </header>
@@ -383,34 +383,12 @@ function HomePage({ onChooseSport }) {
         <section
           style={{
             ...homeHeroStyles.heroSection,
-            minHeight: isMobile ? 760 : 980,
-           backgroundImage:
-  "linear-gradient(to bottom, rgba(1,6,18,0.50), rgba(1,6,18,0.72)), url('/hero-homepage.PNG')",
+            minHeight: isMobile ? 420 : 700,
+            backgroundImage:
+              "linear-gradient(to bottom, rgba(1,6,18,0.18), rgba(1,6,18,0.38)), url('/hero-homepage.PNG')",
           }}
         >
           <div style={homeHeroStyles.heroInner}>
-            <div style={homeHeroStyles.heroOverlayLogoWrap}>
-              <img
-                src="/sts-logo.png"
-                alt="Sports Stat Sync"
-                style={homeHeroStyles.heroOverlayLogo}
-              />
-            </div>
-
-            <h1 style={homeHeroStyles.heroTitle}>
-              WATCH SPORTS
-              <br />
-              <span style={homeHeroStyles.heroBlue}>ON YOUR TIME.</span>
-              <br />
-              STAY IN SYNC.
-            </h1>
-
-            <p style={homeHeroStyles.heroSubtitle}>
-              Live game stats that sync with your delayed stream.
-              <br />
-              No spoilers. No surprises.
-            </p>
-
             <button
               onClick={() => onChooseSport("nba")}
               style={homeHeroStyles.watchButton}
@@ -473,47 +451,34 @@ function HomePage({ onChooseSport }) {
                 ...homeHeroStyles.sportCardActive,
               }}
             >
-             <button
-  onClick={() => onChooseSport("nba")}
-  style={{
-    ...homeHeroStyles.sportCard,
-    ...homeHeroStyles.sportCardActive,
-  }}
->
-  <img
-    src="/nba-logo.png"
-    alt="NBA"
-    style={homeHeroStyles.sportLogoImage}
-  />
-  <div style={homeHeroStyles.sportName}>NBA</div>
-  <div style={homeHeroStyles.availableNow}>AVAILABLE NOW</div>
-</button>
+              <img
+                src="/nba-logo.png"
+                alt="NBA"
+                style={homeHeroStyles.sportLogoImage}
+              />
+              <div style={homeHeroStyles.sportName}>NBA</div>
               <div style={homeHeroStyles.availableNow}>AVAILABLE NOW</div>
             </button>
 
-        
             <div style={homeHeroStyles.sportCard}>
-  <img
-    src="/nfl-logo.png"
-    alt="NFL"
-    style={homeHeroStyles.sportLogoImage}
-  />
-  <div style={homeHeroStyles.sportName}>NFL</div>
-  <div style={homeHeroStyles.comingSoon}>COMING SOON</div>
-</div>
-              
+              <img
+                src="/nfl-logo.png"
+                alt="NFL"
+                style={homeHeroStyles.sportLogoImage}
+              />
+              <div style={homeHeroStyles.sportName}>NFL</div>
+              <div style={homeHeroStyles.comingSoon}>COMING SOON</div>
+            </div>
 
-        
-          <div style={homeHeroStyles.sportCard}>
-  <img
-    src="/mlb-logo.png"
-    alt="MLB"
-    style={homeHeroStyles.sportLogoImage}
-  />
-  <div style={homeHeroStyles.sportName}>MLB</div>
-  <div style={homeHeroStyles.comingSoon}>COMING SOON</div>
-</div>
-              
+            <div style={homeHeroStyles.sportCard}>
+              <img
+                src="/mlb-logo.png"
+                alt="MLB"
+                style={homeHeroStyles.sportLogoImage}
+              />
+              <div style={homeHeroStyles.sportName}>MLB</div>
+              <div style={homeHeroStyles.comingSoon}>COMING SOON</div>
+            </div>
           </div>
         </section>
 
@@ -2525,7 +2490,7 @@ const homeHeroStyles = {
   },
 
   logo: {
-    width: 150,
+    width: 140,
     maxWidth: "100%",
     objectFit: "contain",
   },
@@ -2570,55 +2535,23 @@ const homeHeroStyles = {
     overflow: "hidden",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    border: "1px solid rgba(45,110,255,0.22)",
+    border: "1px solid rgba(45,110,255,0.18)",
     boxShadow: "0 20px 60px rgba(0,0,0,0.45)",
     display: "flex",
-    alignItems: "center",
+    alignItems: "flex-end",
     justifyContent: "center",
   },
 
   heroInner: {
     width: "100%",
-    maxWidth: 900,
-    padding: "56px 24px 70px",
-    textAlign: "center",
-  },
-
-  heroOverlayLogoWrap: {
-    marginBottom: 22,
-  },
-
-  heroOverlayLogo: {
-    width: 320,
-    maxWidth: "90%",
-    objectFit: "contain",
-  },
-
-  heroTitle: {
-    margin: 0,
-    fontSize: "clamp(46px, 8vw, 96px)",
-    lineHeight: 0.95,
-    fontWeight: 900,
-    fontStyle: "italic",
-    letterSpacing: "-0.05em",
-    color: "#FFFFFF",
-    textShadow: "0 8px 24px rgba(0,0,0,0.4)",
-  },
-
-  heroBlue: {
-    color: "#146BFF",
-  },
-
-  heroSubtitle: {
-    marginTop: 26,
-    fontSize: "clamp(18px, 2vw, 24px)",
-    lineHeight: 1.55,
-    color: "#E5E7EB",
-    textShadow: "0 4px 14px rgba(0,0,0,0.35)",
+    minHeight: "100%",
+    display: "flex",
+    alignItems: "flex-end",
+    justifyContent: "center",
+    padding: "0 24px 50px",
   },
 
   watchButton: {
-    marginTop: 30,
     background: "#1368FF",
     color: "white",
     border: "none",
@@ -2713,16 +2646,18 @@ const homeHeroStyles = {
     cursor: "pointer",
   },
 
-  sportLogo: {
-    fontSize: 48,
-    fontWeight: 900,
-    color: "#FFFFFF",
+  sportLogoImage: {
+    width: 72,
+    height: 72,
+    objectFit: "contain",
     marginBottom: 18,
-    letterSpacing: "-0.03em",
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
 
   sportName: {
-    fontSize: 56,
+    fontSize: 44,
     fontWeight: 900,
     color: "#FFFFFF",
     marginBottom: 18,
@@ -2733,7 +2668,7 @@ const homeHeroStyles = {
     display: "inline-block",
     background: "#1368FF",
     color: "white",
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 900,
     padding: "12px 22px",
     borderRadius: 12,
@@ -2743,7 +2678,7 @@ const homeHeroStyles = {
     display: "inline-block",
     background: "#2A2F37",
     color: "#D1D5DB",
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 900,
     padding: "12px 22px",
     borderRadius: 12,
@@ -2765,4 +2700,4 @@ const homeHeroStyles = {
     flexWrap: "wrap",
     color: "#79A8FF",
   },
-}
+};
