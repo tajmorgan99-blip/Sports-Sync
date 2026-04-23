@@ -473,22 +473,47 @@ function HomePage({ onChooseSport }) {
                 ...homeHeroStyles.sportCardActive,
               }}
             >
-              <div style={homeHeroStyles.sportLogo}>NBA</div>
-              <div style={homeHeroStyles.sportName}>NBA</div>
+             <button
+  onClick={() => onChooseSport("nba")}
+  style={{
+    ...homeHeroStyles.sportCard,
+    ...homeHeroStyles.sportCardActive,
+  }}
+>
+  <img
+    src="/nba-logo.png"
+    alt="NBA"
+    style={homeHeroStyles.sportLogoImage}
+  />
+  <div style={homeHeroStyles.sportName}>NBA</div>
+  <div style={homeHeroStyles.availableNow}>AVAILABLE NOW</div>
+</button>
               <div style={homeHeroStyles.availableNow}>AVAILABLE NOW</div>
             </button>
 
+        
             <div style={homeHeroStyles.sportCard}>
-              <div style={homeHeroStyles.sportLogo}>NFL</div>
-              <div style={homeHeroStyles.sportName}>NFL</div>
-              <div style={homeHeroStyles.comingSoon}>COMING SOON</div>
-            </div>
+  <img
+    src="/nfl-logo.png"
+    alt="NFL"
+    style={homeHeroStyles.sportLogoImage}
+  />
+  <div style={homeHeroStyles.sportName}>NFL</div>
+  <div style={homeHeroStyles.comingSoon}>COMING SOON</div>
+</div>
+              
 
-            <div style={homeHeroStyles.sportCard}>
-              <div style={homeHeroStyles.sportLogo}>MLB</div>
-              <div style={homeHeroStyles.sportName}>MLB</div>
-              <div style={homeHeroStyles.comingSoon}>COMING SOON</div>
-            </div>
+        
+          <div style={homeHeroStyles.sportCard}>
+  <img
+    src="/mlb-logo.png"
+    alt="MLB"
+    style={homeHeroStyles.sportLogoImage}
+  />
+  <div style={homeHeroStyles.sportName}>MLB</div>
+  <div style={homeHeroStyles.comingSoon}>COMING SOON</div>
+</div>
+              
           </div>
         </section>
 
